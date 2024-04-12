@@ -5,16 +5,16 @@ const Persons = ({ filter, personsState }) => {
 
   const personsToShow = persons.filter(person => person.name.toLowerCase().match(filter.toLowerCase()))
 
-  const deletePerson = name => {
-    if (window.confirm(`Delete ${name}?`)) {
-      const id = persons.find(p => p.name === name).id
+  const deletePerson = person => {
+    if (window.confirm(`Delete ${person.name}?`)) {
+      const id = person.id
       personService
       .delPerson(id)
       .catch(error => {
         alert(`the person '${personsToShow.find(p => p.id === id).name}' was already deleted from server`)
       })
       .finally(() => {
-        setPersons(persons.filter(person => person.id !== id))
+        setPersons(persons.filter(p => p.id !== id))
       })
     }
   }
@@ -22,8 +22,8 @@ const Persons = ({ filter, personsState }) => {
   return (
     <div>
       {personsToShow.map(person =>
-        <div key={person.name}>
-          {person.name} {person.number} <button onClick={() => deletePerson(person.name)}>delete</button>
+        <div key={person.id}>
+          {person.name} {person.number} <button onClick={() => deletePerson(person)}>delete</button>
         </div>
       )}
     </div>
