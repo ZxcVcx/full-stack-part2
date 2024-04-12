@@ -21,16 +21,16 @@ POST http://localhost:3001/api/persons HTTP/1.1s
 Content-Type: application/json
 
 {
-    "name": "Test 5",
-    "number": "10-1-1111"
+    "name": "Test",
+    "number": "10-1-4321"
 }
 
 ###
-PUT http://localhost:3001/api/persons/5 HTTP/1.1s
+PUT http://localhost:3001/api/persons/661916da630005e667945c83 HTTP/1.1s
 Content-Type: application/json
 
 {
-    "name": "Test 1",
+    "name": "Test",
     "number": "10-1-1111"
 }
 
