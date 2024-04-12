@@ -8,6 +8,7 @@
     "debug": "nodemon --inspect index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "init:db": "node mongo_inti.js",
+    "lint": "eslint .",
     "build:ui": "rm -rf dist && cd ../phonebook-frontend && npm run build && cp -r dist ../phonebook-backend",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
   },
@@ -23,6 +24,12 @@
     "node": "^18.20.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.0.2",
+    "@eslint/js": "^9.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "globals": "^15.0.0",
     "nodemon": "^3.1.0"
   }
 }
