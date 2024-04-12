@@ -7,7 +7,7 @@ const PersonForm = ({ nameState, phoneState, personsState, messageState, message
   const [, setMessage] = messageState
   const [, setMessageType] = messageTypeState
 
-  const showNotification = (message, type) => {
+  const showNotification = (message, type='error') => {
     setMessage(message)
     setMessageType(type)
     setTimeout(() => {
@@ -29,7 +29,9 @@ const PersonForm = ({ nameState, phoneState, personsState, messageState, message
             setPersons(persons.map(p => p.name !== newName ? p : returnedPerson))
           })
           .catch(error => {
-            showNotification(`Information of ${newName} has already been removed from server.`, 'error')
+            console.log(error.response.data.error)
+            showNotification(error.response.data.error, 'error')
+            // showNotification(`Information of ${newName} has already been removed from server.`, 'error')
             setPersons(persons.filter(p => p.name !== newName))
           })
       }
@@ -43,7 +45,9 @@ const PersonForm = ({ nameState, phoneState, personsState, messageState, message
           setNewPhone('')
         })
         .catch(error => {
-          showNotification(`Information of ${newName} has already been added to server.`)
+          console.log(error.response.data.error)
+          showNotification(error.response.data.error, 'error')
+          // showNotification(`Information of ${newName} has already been added to server.`)
         })
     }
   }
